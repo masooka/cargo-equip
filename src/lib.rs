@@ -179,7 +179,7 @@ pub struct OptEquip {
     toolchain_for_proc_macro_srv: Option<String>,
 
     /// Expand the libraries to the module
-    #[structopt(long, value_name("MODULE_PATH"), default_value("crate::__cargo_equip"))]
+    #[structopt(long, value_name("MODULE_PATH"), default_value("crate::sub"))]
     mod_path: CrateSinglePath,
 
     /// Remove some part [possible values: docs, comments]
