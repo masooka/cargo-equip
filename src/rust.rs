@@ -528,11 +528,9 @@ impl<'opt> CodeEdit<'opt> {
 
                     let insertion = insertion.trim_start();
 
-                    let pos = item_use.span().start();
-                    self.replacements.insert((pos, pos), "/*".to_owned());
-                    let pos = item_use.span().end();
-                    self.replacements
-                        .insert((pos, pos), "*/".to_owned() + insertion);
+                    let start = item_use.span().start();
+                    let end = item_use.span().end();
+                    self.replacements.insert((start, end), insertion.into());
                 }
             }
         }
