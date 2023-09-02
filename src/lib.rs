@@ -1019,7 +1019,7 @@ fn bundle(
                 )
             })?;
 
-        let doc = &{
+        let _doc = &{
             fn list_packages<'a>(
                 doc: &mut String,
                 title: &str,
@@ -1145,7 +1145,7 @@ fn bundle(
         code += "\n";
         code += &match root_crate {
             RootCrate::BinLike(..) => {
-                "// The following code was expanded by `cargo-equip`.\n".to_owned()
+                String::new() // "// The following code was expanded by `cargo-equip`.\n".to_owned()
             }
             RootCrate::Lib(..) => format!("use {}::prelude::*;\n", cargo_equip_mod_name),
         };
@@ -1190,6 +1190,7 @@ fn bundle(
             Ok(())
         };
 
+        let doc = String::new();
         for doc in doc.lines() {
             code += "///";
             if !code.is_empty() {
