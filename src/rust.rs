@@ -633,8 +633,7 @@ impl<'opt> CodeEdit<'opt> {
                 let end = to_index(code_lines, span.end());
                 let start = to_index(code_lines, span.start());
                 self.string
-                    .insert_str(end, &format!("*/{}", minify_group(expansion)));
-                self.string.insert_str(start, "/*");
+                    .replace_range(start..end, &minify_group(expansion));
 
                 continue;
             }
